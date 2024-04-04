@@ -16,7 +16,7 @@ def run_subprocess(commands, project_path):
 def create_project():
     parent_dir = input("Enter the parent directory path: ")
     project_name = input("Enter the project directory name: ")
-    subdirectories = ["docs", "src", "data", "notes", "img"]
+    subdirectories = ["docs", "src", "data", "notes", "tests", "img"]
     files_to_create = ["README.md", "scribble.md", ".env"]
     special_files = {"src": ["main.py", "__init__.py"]}
     project_path = os.path.join(parent_dir, project_name)
@@ -33,11 +33,14 @@ def create_project():
 
     commands = [
         "python -m venv .venv",
+        ".venv\\scripts\\activate"
         ".venv\\Scripts\\python -m pip install --upgrade pip",
         ".venv\\Scripts\\python -m pip install flake8",
         ".venv\\Scripts\\python -m pip install pre-commit",
         ".venv\\Scripts\\pre-commit install",
+        "git init",
         "git add .",
+        "git commit -m 'Initial commit'"
     ]
     run_subprocess(commands, project_path)
 
