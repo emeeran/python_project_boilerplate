@@ -19,6 +19,7 @@ def create_project():
     subdirectories = ["docs", "src", "data", "notes", "tests", "img"]
     files_to_create = ["README.md", "scribble.md", ".env"]
     special_files = {"src": ["main.py", "__init__.py"]}
+
     project_path = os.path.join(parent_dir, project_name)
     os.makedirs(project_path, exist_ok=True)
 
@@ -40,13 +41,21 @@ def create_project():
         ".venv\\Scripts\\pre-commit install",
         "git init",
         "git add .",
-        "git commit -m 'Initial commit'"
+        "git commit -m 'Initial commit'",
     ]
     run_subprocess(commands, project_path)
 
+    # Example of breaking a dictionary assignment into multiple lines
     file_contents = {
         ".flake8": "[flake8]\nmax-line-length = 120\nexclude = .git,__pycache__\n",
-        ".pre-commit-config.yaml": "repos:\n - repo: https://github.com/PyCQA/flake8\n    rev: 4.0.1\n    hooks:\n      - id: flake8\n        args: [--max-line-length=120]\n",
+        ".pre-commit-config.yaml": (
+            "repos:\n"
+            " - repo: https://github.com/PyCQA/flake8\n"
+            "    rev: 4.0.1\n"
+            "    hooks:\n"
+            "      - id: flake8\n"
+            "        args: [--max-line-length=120]\n"
+        ),
         ".gitignore": open("git_contents.txt", "r").read(),
         "README.md": open("readme_content.txt", "r").read(),
     }
