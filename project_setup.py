@@ -16,7 +16,7 @@ def run_subprocess(commands, project_path):
 def create_project():
     parent_dir = input("Enter the parent directory path: ")
     project_name = input("Enter the project directory name: ")
-    subdirectories = ["docs", "src", "data", "notes", "tests", "img"]
+    subdirectories = ["docs", "src", "data", "notes", "tests", "img", ".vscode"]
     files_to_create = ["README.md", "scribble.md", ".env"]
     special_files = {"src": ["main.py", "__init__.py"]}
 
